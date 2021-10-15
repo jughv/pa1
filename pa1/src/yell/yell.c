@@ -10,7 +10,7 @@ int main(int argc, char **argv){
        
     //int len = strlen(argv[i]);
     //len +=1;       
-    char str[10];
+    char str[strlen(argv[i])+1];
     strcpy(str, argv[i]); //copy word
 
         for(int j=0; str[j]!='\0';j++){ // each character
