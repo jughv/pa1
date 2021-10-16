@@ -16,8 +16,9 @@ node* new(int num){ //creates new node
     return next;
 }
 
-int counter(node* ptr){
+int counter(node* root){
     int count=0;
+    struct node* ptr= root;
     while (ptr!=NULL){
         count++;
         ptr=ptr->next;
@@ -28,8 +29,6 @@ int counter(node* ptr){
 node* insert(struct node* ptr, int num){ // insert to program
 
     if (ptr->num == num){return ptr;}//if equal to the first item in the list
-
-    //struct node* in = (node*)malloc(sizeof(node)); //node to be inserted
     
     if (ptr->num >num){ //inserted to first item
         struct node* in = (node*)malloc(sizeof(node)); //node to be inserted
@@ -63,6 +62,7 @@ node* insert(struct node* ptr, int num){ // insert to program
 
     struct node* in = (node*)malloc(sizeof(node)); //node to be inserted at end of list
     in->num= num;
+    in->next=NULL;
     before->next = in; //issue occurs here
     return root;
 }
@@ -106,15 +106,11 @@ int main(int argc, char**argv){
     int num, count;
     char instruct;
 
-  //  while (instruct != 'q'){
 
-        //scanf(" %c %d",&instruct,&num);
-        //fgets("%c %d",&instruct,&num);
-
-    while(scanf("%c %d\n",&instruct,&num) !='\0'){
+    while(scanf(" %c %d",&instruct,&num)==2){// takes arguments
     
 
-        printf("char = %c  num = %d\n",instruct, num);
+
 
             if (instruct == 'i'){
 
@@ -136,19 +132,19 @@ int main(int argc, char**argv){
 
 
         count = counter(root);
-        printf("%d : ",count);
+        printf("%d :",count); // print counter
         ptr = root;
         int bs = 0;
+
+            if(count == bs ){ //if no list
+                printf("\n");
+                continue;
+            }
+
         while (ptr!= NULL){
-            printf("%d",ptr->num);
+
+            printf(" %d",ptr->num); //print list
             ptr= ptr->next;
-            //bs++;
-            //if(bs != count){
-                printf(" ");
-            //}
-            //if(bs == count){
-            //    printf("\n");
-            //}
             bs++;
         }
         printf("\n");
@@ -156,8 +152,8 @@ int main(int argc, char**argv){
 
 
 
-
-        }
+       
+        }// end while
 
       ptr = root; 
       while (ptr!=NULL){ // free allocated data
