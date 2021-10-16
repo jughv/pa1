@@ -10,6 +10,12 @@ int main(int argc, char **argv){
         return 0;
     }
     
+    if (argc < 2){//if empty
+        printf("empty");
+        return 0;
+    }
+
+
     for (int i =1;i < argc;i++){ //each word
        
     //int len = strlen(argv[i]);
