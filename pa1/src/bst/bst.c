@@ -18,7 +18,7 @@ node* new(int num){ //creates new node
     return next;
 }
 
-void freedom(node*root){
+void freedom(node*root){   //frees the BST
     if(root->left != NULL){
         freedom(root->left);
     }
@@ -42,22 +42,22 @@ void print(node* root){//prints list out
 
 }
 
-node* search(node* root, int n){//searches for int
+int search(node* root, int n){//searches for int
     node* ptr = root; //pointer to use
 
     while (ptr!=NULL){
 
     if (ptr->num == n){ //if numbers match
-        printf("present");
-        return root;
+      //  printf("present");
+        return 0;
     }
 
 
     if (ptr->num > n){ //go to the left of tree
         ptr = ptr->left;
         if (ptr == NULL){
-            printf("absent");
-            return root;
+        //    printf("absent");
+            return 1;
         }
       
 
@@ -66,8 +66,8 @@ node* search(node* root, int n){//searches for int
     if (ptr->num < n){ //go to the left of tree
         ptr = ptr->right;
             if (ptr == NULL){
-                printf("absent");
-                return root;
+          //      printf("absent");
+                return 1;
             }
       
 
@@ -76,7 +76,7 @@ node* search(node* root, int n){//searches for int
 
     }//end whille
 
-    return root;
+    return 1;
 }
 
 node* insert(node* root, int num){
@@ -213,7 +213,7 @@ int main(int argc, char**argv){
     //struct node* ptr=NULL;
     int num;
     char instruct;
-   // int j;
+    int j;
 
 
     while(scanf(" %c %d",&instruct,&num)==2){// takes arguments
@@ -236,13 +236,14 @@ int main(int argc, char**argv){
             if (instruct == 'd'){//delete
 
                 if (root == NULL){//if first item in list
-                    root = new(num);
+                    printf("absent");
+                    continue;
                     }
                     
-                    root = delete(root, num);
-                    printf("deleted");
+                 /*   root = delete(root, num);
+                    printf("deleted"); */
                 
-               /* j = search(root, num);//search list
+                j = search(root, num);//search list
                 
                 if (j == 1){
                     printf("absent");
@@ -250,7 +251,7 @@ int main(int argc, char**argv){
                 root = delete(root, num);
                 printf("deleted");
                 }
-                */
+                
                
 
             }
@@ -259,15 +260,16 @@ int main(int argc, char**argv){
 
                 if (root == NULL){//if list is empty
                     printf("absent");
+                    continue;
                 }
             
-                search(root, num); //search
+                j = search(root, num); //search
 
-                /*if (j == 0) {           
+                if (j == 0) {           
                     printf("present");      //if present
                 }else{
                     printf("absent");       //if absent
-            }*/
+            }
 
             }
 
@@ -303,8 +305,8 @@ int main(int argc, char**argv){
         printf("\n");      
         }// end scan while
 
-
+    if (root!= NULL){
     freedom(root);//free all allocated data
-
+    }
     return 0;
 }
