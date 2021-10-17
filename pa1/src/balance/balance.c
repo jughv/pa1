@@ -17,6 +17,7 @@ node* new(char delim){
     return next;
 }
 
+/*
 static void reverse(struct node** front){
     struct node* prev = NULL;
     struct node* current = *front;
@@ -33,6 +34,7 @@ static void reverse(struct node** front){
 
 
 }
+*/
 
 static void freedom(node* ptr, node* root){
     while (ptr!=NULL){
@@ -41,6 +43,7 @@ static void freedom(node* ptr, node* root){
         free(root);
         root = ptr;
     }
+    free(root);
 }
 
 
@@ -99,16 +102,18 @@ int main(int argc, char **argv){
 
 
     if (ptr->delim != '\0'){
-        reverse(&ptr);
+       // reverse(&ptr);
         printf("open: ");
         root = ptr;
-        while (ptr!=NULL){
+        while (ptr->delim!='\0'){
         printf("%c",ptr->delim);
         ptr=ptr->point;
         }
+        ptr = root;
+        freedom(ptr, root);
         return EXIT_FAILURE;
     }
-    
+    printf("\n");
     ptr = root;
     freedom(ptr, root);
 
@@ -116,4 +121,3 @@ int main(int argc, char **argv){
     
     return 0;
 }
-

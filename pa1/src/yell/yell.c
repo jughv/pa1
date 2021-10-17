@@ -5,15 +5,7 @@
 
 int main(int argc, char **argv){
 
-    if (argc == 2 && isspace(argv[1][0]) ==  1)
-    {
-        return 0;
-    }
-    
-    if (argc < 2){//if empty
-        printf("empty");
-        return 0;
-    }
+
 
 
     for (int i =1;i < argc;i++){ //each word
@@ -36,7 +28,7 @@ int main(int argc, char **argv){
 
     if(isspace(argv[1][0]) ==  1){printf("!!\n");}
 
-    if(argv[1] != NULL){
+    if(argv[1][0] != '\0'){ // if not empty print
      printf("!!\n");}
 
     //printf("%s\n",argv[0]);

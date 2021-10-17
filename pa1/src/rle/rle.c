@@ -22,9 +22,12 @@ node* new(char letter, int count){
 
 int main(int argc, char **argv){
 
+    if(argv[1][0] == '\0'){
+        printf("\n");
+    }
+
  
-    int newlen = 2; //new string length
-    
+    int newlen = 0; //new string length   
     int oldlen = strlen(argv[1]);
     int count = 1;
   //  int where = 0;
@@ -56,6 +59,7 @@ int main(int argc, char **argv){
 
    if(oldlen < newlen){ //if oldlength will be shorter
         printf("%s\n", argv[1]);
+        printf("%d : %d\n", oldlen, newlen);
         return 0;
     }
 
