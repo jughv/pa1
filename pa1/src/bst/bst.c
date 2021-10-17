@@ -216,10 +216,25 @@ int main(int argc, char**argv){
     int j;
 
 
-    while(scanf(" %c %d",&instruct,&num)==2){// takes arguments
+    while(scanf(" %c",&instruct)==1){
+        //scanf(" %c %d",&instruct,&num)==2){// takes arguments
         // ||  scanf(" %c",&instruct) == 1  //tryna figure out how to take just p
-    
 
+            //if (scanf(" %c",&instruct)==1){
+
+            if (instruct == 'p'){//print
+
+                if (root == NULL){//if first item in list
+                printf("\n");
+                continue;
+                }
+            print(root);
+            //continue; //print out list
+            }
+        
+
+            else if(scanf(" %d",&num) > 0){
+            //printf("instructions: %c\nnumber: %d\n",instruct,num);
 
 
             if (instruct == 'i'){//insert
@@ -231,14 +246,14 @@ int main(int argc, char**argv){
             }
 
                 root = insert(root, num);//insert
-            }
+            }//end insert
 
             if (instruct == 'd'){//delete
 
                 if (root == NULL){//if first item in list
-                    printf("absent");
+                    printf("absent\n");
                     continue;
-                    }
+                }
                     
                  /*   root = delete(root, num);
                     printf("deleted"); */
@@ -254,12 +269,12 @@ int main(int argc, char**argv){
                 
                
 
-            }
+            }//end delete
 
             if (instruct == 's'){//search
 
                 if (root == NULL){//if list is empty
-                    printf("absent");
+                    printf("absent\n");
                     continue;
                 }
             
@@ -271,16 +286,13 @@ int main(int argc, char**argv){
                     printf("absent");       //if absent
             }
 
-            }
+            }//end search
 
-            if (instruct == 'p'){//print
 
-                if (root == NULL){//if first item in list
-                continue;
-            }
+            }//end else if 2
+            
 
-            print(root); //print out list
-            }
+            
 
 
        
